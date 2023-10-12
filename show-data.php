@@ -13,7 +13,7 @@
      <table id="table" callspacing="0">
         <tr class="table-row1">
             <td id="header">
-             <h1>Ajax Data Load</h1>
+             <h1>Ajax Data Load With PHP & jQuery</h1>
             </td>
         </tr>
      </table>
@@ -35,6 +35,7 @@
         </tr>
         
      </table>
+
 <script>
     $(document).ready(function(){
         $("#load-button").on("click", function(e){
@@ -43,11 +44,10 @@
                 type: "POST",
                 success: function(data){
                     $("#table-data").html(data);
-            })
-        })
+            }
+        });
     });
+});
 </script>
-    
-
 </body>
 </html>
