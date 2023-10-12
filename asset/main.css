@@ -37,3 +37,30 @@
     background-color: lightcyan;
     text-align: center;
 }
+
+#fname,
+#lname {
+    padding: 10px;
+}
+
+#save-button {
+    padding: 10px;
+    background-color: aquamarine;
+    border: 1px solid black;
+}
+
+#error-message {
+    color: red;
+    padding: 10px;
+    background-color: lightpink;
+    display: none;
+    margin-top: 10px;
+}
+
+#success-message {
+    color: green;
+    padding: 10px;
+    background-color: #A3EBB1ee;
+    display: none;
+    margin-top: 10px;
+}

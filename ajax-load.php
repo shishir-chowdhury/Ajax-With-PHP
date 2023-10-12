@@ -15,7 +15,7 @@ if(mysqli_num_rows($result)> 0 ){
     
     while($row = mysqli_fetch_assoc($result)){
         // echo '<pre>'; print_r($row); echo '</pre>';
-        $output .="<tr class='table-middle'><td>{$row["id"]}</td><td>{$row["first name"]}</td><td>{$row["last name"]}</td></tr>";
+        $output .="<tr class='table-middle'><td>{$row["id"]}</td><td>{$row["first_name"]}</td><td>{$row["last_name"]}</td></tr>";
     }
     $output .= "</table>";
     mysqli_close($conn);
