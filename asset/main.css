@@ -64,3 +64,11 @@
     display: none;
     margin-top: 10px;
 }
+
+.delete-btn {
+    background-color: lightcoral;
+    border: 0px;
+    color: white;
+    padding: 5px 15px;
+    cursor: pointer;
+}

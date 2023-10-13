@@ -11,11 +11,12 @@ if(mysqli_num_rows($result)> 0 ){
       <th>ID</th>
       <th>First Name</tk>
       <th>Last Name</th>
+      <th>Option</th>
     </tr>';
     
     while($row = mysqli_fetch_assoc($result)){
         // echo '<pre>'; print_r($row); echo '</pre>';
-        $output .="<tr class='table-middle'><td>{$row["id"]}</td><td>{$row["first_name"]}</td><td>{$row["last_name"]}</td></tr>";
+        $output .="<tr class='table-middle'><td>{$row["id"]}</td><td>{$row["first_name"]}</td><td>{$row["last_name"]}</td><td><button class='delete-btn' data-id='{$row["id"]}'>Delete</button></td></tr>";
     }
     $output .= "</table>";
     mysqli_close($conn);
