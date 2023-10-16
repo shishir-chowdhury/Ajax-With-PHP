@@ -8,14 +8,12 @@
 </head>
 <body>
     <!-- Hrader -->
-    <div class="main-table">
-     <table id="table" callspacing="0">
-        <tr class="table-row1">
-            <td id="header">
-             <h1>PHP & Ajax CRUD</h1>
-            </td>
-        </tr>
-     </table>
+    <div class="page-header">
+            <h1>PHP & Ajax CRUD</h1>
+            <div class="search">
+                Search:
+                <input id="search-input" type="text" autocomplete="off">
+            </div>
     </div>
 
     <!-- Input Field -->
@@ -31,6 +29,11 @@
                <div id="error-message"></div>
                <div id="success-message"></div>
             </td> 
+        </tr>
+        <tr>
+            <td id="search-data">
+
+            </td>
         </tr>
      </table>
      </div>
@@ -64,6 +67,7 @@
 
     <script>
     $(document).ready(function(){
+
         // Load The Table Records
         function loadTable () {
             $.ajax({
@@ -96,7 +100,7 @@
                         loadTable();
                         $("#add-form").trigger("reset");
                         $("#error-message").slideUp();
-                        $("#success-message").html("Data Insert Successfully!!!!!!!!!").slideDown();
+                        $("#success-message").html("Data Insert Successfully!!!!!!!!!").slideDown().fadeOut(3000);
                     }else{
                         alert("Can't Save Records!!!")
                     }
@@ -144,7 +148,7 @@
             });
         });
 
-        //  // Update Records From The Table
+        // Update Records From The Table
         $(document).on("click", "#edit-submit", function(){
             var stuId = $("#edit-id").val();
             var stuFname = $("#edit-fname").val();
@@ -164,7 +168,7 @@
                                $("#modal").fadeOut(3000);
                                loadTable();
                                $("#edit-error-message").slideUp();
-                               $("#edit-success-message").html("Records Update Successfully!!!!!").slideDown().fadeOut();
+                               $("#edit-success-message").html("Records Update Successfully!!!!!").slideDown().fadeOut(3000);
                             
                         }else{
                             $("#error-message").html("Can't Update The Records!!!!!!!!").slideDown();
@@ -177,10 +181,27 @@
             })
         });
 
-         //Hide Modal Box
-         $("#close-btn").on("click", function(){
+        //Hide Modal Box
+        $("#close-btn").on("click", function(){
             $("#modal").hide();
-         });
+        });
+
+        //Live Search
+        $("#search-input").on("keyup", function(){
+            var search_item = $(this).val();
+            
+            $.ajax({
+                url: "live-search.php",
+                type: "POST",
+                data: {search:search_item},
+                success: function(data){
+                    $("#table-data").html(data);
+
+                }
+            });
+        });
+
+
 </script>
 </body>
 </html>
