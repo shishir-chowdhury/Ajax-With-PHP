@@ -159,3 +159,19 @@
     right: -15px;
     cursor: pointer;
 }
+
+#pagination{
+    text-align: center;
+    padding: 25px;
+}
+
+#pagination a {
+    background-color: #0476D0;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.active {
+    background-color: lightseagreen !important;
+}

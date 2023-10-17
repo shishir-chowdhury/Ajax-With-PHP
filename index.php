@@ -30,16 +30,10 @@
                <div id="success-message"></div>
             </td> 
         </tr>
-        <tr>
-            <td id="search-data">
-
-            </td>
-        </tr>
      </table>
      </div>
 
      <!-- Modal Section -->
-     
     <div id="modal">
         <div id="modal-form">
             <h2 style="text-align:center">Edit Info</h2>
@@ -53,32 +47,40 @@
         </div>
     </div>
 
-    <!-- Dumy Table -->
-     <table  id="table-data" border="1" width="100%" cellspacing="0" cellpadding="10px">
+    <!-- Dummy Table -->
+     <div  id="table-data">
         <tr class="table-head">
-          <th>ID</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Options</th>
         </tr>
-     </table>
+    </div>
+
+     <!-- Pagination -->
+    <div id="pagination">
+    </div>
 
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <script>
     $(document).ready(function(){
-
+        var page_no = 1;
         // Load The Table Records
-        function loadTable () {
+        function loadTable (page) {
             $.ajax({
                 url: "ajax-load.php",
                 type: "POST",
+                data: {page_no: page},
                 success: function(data){
                     $("#table-data").html(data);
                 }
             });
         }
         loadTable();
+
+        // Pagination 
+        $(document).on("click", "#pagination a", function(e){
+            e.preventDefault();
+            var page_id = $(this).attr("id");
+             loadTable(page_id);
+        });
 
         //Insert New Records In The Table
         $("#save-button").on("click", function(e){
@@ -179,9 +181,7 @@
 
                 }
             })
-        });
-
-        //Hide Modal Box
+         //Hide Modal Box
         $("#close-btn").on("click", function(){
             $("#modal").hide();
         });
@@ -189,19 +189,22 @@
         //Live Search
         $("#search-input").on("keyup", function(){
             var search_item = $(this).val();
-            
-            $.ajax({
-                url: "live-search.php",
+            if (search_item ==""){
+                loadTable(page_no);
+            }else{
+                $.ajax({
+                url: "ajax-live-search.php",
                 type: "POST",
                 data: {search:search_item},
                 success: function(data){
-                    $("#table-data").html(data);
-
+                $("#table-data").html(data);
                 }
             });
+            }
         });
 
-
+    });
+   
 </script>
 </body>
 </html>
