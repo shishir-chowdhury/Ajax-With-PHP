@@ -7,8 +7,8 @@
     <title>PHP & Ajax CRUD</title>
 </head>
 <body>
-    <!-- Hrader -->
-    <div class="page-header">
+    <!-- Header -->
+    <div class="page-header"> 
             <h1>PHP & Ajax CRUD</h1>
             <div class="search">
                 Search:
@@ -18,7 +18,7 @@
 
     <!-- Input Field -->
     <div class="table-body">
-     <table id="table" callspacing="0">
+     <table id="table" cellspacing="0">
         <tr>
             <td id="input-field">
                <form id="add-form">

@@ -35,8 +35,8 @@ if(mysqli_num_rows($result)> 0 ){
 
     //Pagination: Total Number Of Page
     $total_data_sql = "SELECT * FROM students";
-    $recoads = mysqli_query($conn, $total_data_sql) or die("SQL Query Failed!!!!!!!!");
-    $total_records = mysqli_num_rows($recoads);
+    $records = mysqli_query($conn, $total_data_sql) or die("SQL Query Failed!!!!!!!!");
+    $total_records = mysqli_num_rows($records);
     $total_pages = ceil($total_records/$limit_per_page);
 
     $output .="<div id='pagination'>";
